@@ -48,9 +48,9 @@ export class OpensprinklerControl extends LitElement {
     return html`<opensprinkler-generic-entity-row .config=${config} .hass=${this.hass} .stateObj=${this.entity}>
       ${this._state(enabled)}
       ${loading ? html`<mwc-circular-progress indeterminate density="-4"></mwc-circular-progress>`
-      : html`<mwc-icon-button label="Run station" class="button" @click=${() => this._toggleEntity(this.entity)} .disabled=${!enabled}>
+      : html`<button class="button" @click=${() => this._toggleEntity(this.entity)} ?disabled=${!enabled}>
         <ha-svg-icon .path=${this._toggleIcon()}></ha-svg-icon>
-      </mwc-icon-button>`}
+      </button>`}
     </opensprinkler-generic-entity-row>`;
   }
 
@@ -130,15 +130,36 @@ export class OpensprinklerControl extends LitElement {
       opensprinkler-generic-entity-row { height: var(--opensprinkler-line-height); }
 
       .button {
-        color: var(--secondary-text-color);
-        --mdc-icon-button-size: 48px;
-        margin-inline-end: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border: none;
+        border-radius: 22px;
+        background: var(--secondary-background-color);
+        color: var(--primary-text-color);
+        cursor: pointer;
         margin-inline-start: 8px;
+        flex-shrink: 0;
+        transition: background 0.2s;
+      }
+      .button:hover {
+        background: var(--state-color, var(--secondary-background-color));
+        filter: brightness(0.9);
+      }
+      .button:disabled {
+        opacity: 0.4;
+        cursor: default;
+      }
+      .button ha-svg-icon {
+        width: 22px;
+        height: 22px;
       }
 
       mwc-circular-progress {
         margin-inline-start: 8px;
-        margin-inline-end: -4px;
+        margin-inline-end: 4px;
       }
     `;
   }

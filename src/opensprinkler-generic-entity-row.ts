@@ -52,15 +52,13 @@ class OpensprinklerGenericEntityRow extends LitElement {
           : ""}
       </div>
       <slot></slot>
-      ${this.config.hide_dots ? '' : html`<mwc-icon-button
+      ${this.config.hide_dots ? '' : html`<button
         class="more-info"
-        label="Open more info"
         @click=${this._handleClick}
         tabindex="0"
-        style="margin-inline-end: -8px"
       >
         <ha-svg-icon .path=${mdiDotsVertical}></ha-svg-icon>
-      </mwc-icon-button>`}
+      </button>`}
     `;
   }
 
@@ -81,7 +79,6 @@ class OpensprinklerGenericEntityRow extends LitElement {
         display: flex;
         align-items: center;
         flex-direction: row;
-        --mdc-icon-button-size: 48px;
       }
       .info {
         margin-left: 16px;
@@ -120,7 +117,25 @@ class OpensprinklerGenericEntityRow extends LitElement {
         cursor: pointer;
       }
       .more-info {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border: none;
+        border-radius: 22px;
+        background: var(--secondary-background-color);
         color: var(--secondary-text-color);
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: background 0.2s;
+      }
+      .more-info:hover {
+        filter: brightness(0.9);
+      }
+      .more-info ha-svg-icon {
+        width: 22px;
+        height: 22px;
       }
     `;
   }
