@@ -81,7 +81,7 @@ class OpensprinklerGenericEntityRow extends LitElement {
         display: flex;
         align-items: center;
         flex-direction: row;
-        --mdc-icon-button-size: 40px;
+        --mdc-icon-button-size: 48px;
       }
       .info {
         margin-left: 16px;

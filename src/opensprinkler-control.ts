@@ -131,9 +131,9 @@ export class OpensprinklerControl extends LitElement {
 
       .button {
         color: var(--secondary-text-color);
-        --mdc-icon-button-size: 40px;
-        margin-inline-end: -8px;
-        margin-inline-start: 4px;
+        --mdc-icon-button-size: 48px;
+        margin-inline-end: 0;
+        margin-inline-start: 8px;
       }
 
       mwc-circular-progress {
